@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automatic AC</title>
+
+  <!-- Prism.js syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+
+  <!-- Includes the stylesheet file styles.css -->
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<script>
+  window.addEventListener("beforeprint", () => {
+    const proto = document.getElementById("prototypeImage");
+    const printHeroImg = document.querySelector("#print-hero img");
+
+    if (proto && printHeroImg) {
+      printHeroImg.src = proto.src;
+    }
+  });
+</script>
+
+
+<body>
+  <!-- Fixed Navigation Menu -->
+  <nav id="menu">
+    <h3>Menu</h3>
+    <ul>
+      <li><a href="#top">Title</a></li>
+      <li><a href="#information">Project Information</a></li>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#circuit-diagram">Circuit</a></li>
+      <li><a href="#environment">Environment</a></li>
+      <li><a href="#bom">BoM</a></li>
+      <li><a href="#prototype">Prototype</a></li>
+      <li><a href="#code">Code</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </nav>
+  <button class="print-button" onclick="window.print()"
+    style="position: fixed; bottom: 24px; right: 24px; padding: 10px 16px; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15); font-size: 0.9rem; z-index: 2000;">
+     Print This Page </button>
+
+  <h1 id="top">Automatic AC </h1>
+  <div id="print-hero">
+    <img src="" alt="">
+  </div>
+
+  <section id="information">
+    <h2>Project Information</h2>
+    <p><strong>Course:</strong> TECH 117 (Computer Engineering Technology, Fall 2025)</p>
+    <p><strong>Instructor:</strong> Ph.D. Ana Rodrigues</p>
+    <p><strong>Team Members:</strong></p>
+    <ul>
+      <li>Oluwayemi adeyinka</li>
+      <li>Brandon Bacchus</li>
+      <li>Oneal Bobb</li>
+      <li>David Munguia</li>
+    </ul>
+  </section>
+
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>The Intelligent Automatic Air Conditioning System is designed to improve indoor comfort through automated
+      temperature and human presence detection. The idea behind this project is to develop a system that automatically
+      controls air conditioning based on room temperature and human presence.
+      Using a <strong>Arduino microcontroller</strong>, a <strong>HC-SR501 human presence detection sensor</strong>, a
+      <strong>Small DC motor</strong>, <strong>an LCD screen</strong>, and <strong>Digital temp sensor</strong> the
+      system automatically activates
+      the air conditioner when someone enters the room and cooling is required. This project aligns with the United
+      Nations Sustainable Development Goals (SDGs),
+      particularly SDG 7: Affordable and Clean Energy and SDG 12: Responsible Consumption and Production.
+      By ensuring that cooling is only activated when needed, the system aims to reduce unnecessary energy consumption,
+      improve energy efficiency and promote more sustainable use of electricity.
+    </p>
+    <h2>Goals of the project</h2>
+    <ul>
+      <li>To automatically activate the air conditioning system when a person enters the room.</li>
+      <li>To monitor room temperature and maintain a comfortable indoor environment.</li>
+      <li>To reduce the need for manual operation of the air conditioner.</li>
+      <li>To provide a convenient and responsive cooling system that adapts to human presence and room conditions.</li>
+      <li>Display temperature and humidity.</li>
+    </ul>
+    <h2>Idea Behind the Project</h2>
+    <p>The main idea is to create an intelligent cooling system that responds to both the room's temperature and human
+      presence. Instead of requiring someone to manually switch the air conditioner on and off, the system automatically
+      activates cooling
+      when a person enters a room and the temperature is above the desired level.
+    </p>
+    <h2>Possible Difficulties</h2>
+    <p>Before starting the project, the biggest challenge we can identify is the coding behind it. Our goal is to code
+      for both a temperature snesor and motion detection sensor to work
+      together to activate the motor. Including both sensors will be a new experience for everyone involved. The
+      complicated wiring may also prove to be
+      overwhelming and confusing as this project is the most complex project we have worked on yet. More specific
+      problems include:
+    </p>
+    <ul>
+      <li><strong>Sensor Accuracy:</strong> The temperature sensor may provide inaccurate readings.</li>
+      <li><strong>Motion Detection:</strong> The HC-SR501 may fail to detect someone who remains still for a long time.
+      </li>
+      <li><strong>Arduino Programming:</strong> Combining temperature and motion sensor inputs may make programming
+        challenging.</li>
+      <li><strong>Motor Control:</strong> Controlling the DC motor based on temperature and human presence may require
+        additional
+        components.</li>
+      <li><strong>Wiring and Connections:</strong> Connecting all components correctly and ensuring they work together
+        may require
+        troubleshooting.</li>
+      <li><strong>Power Supply:</strong> Providing sufficient power to the Arduino, sensors and DC motor may be
+        challenging.</li>
+    </ul>
+  </section>
+
+  <section id="circuit-diagram">
+    <h2>Circuit Diagram</h2>
+    <p>The ultrasonic sensor measures distance; the Arduino activates LEDs and the buzzer according to distance
+      thresholds.</p>
+    <img src="collision-warning-system-Arduino.jpg" alt="Arduino collision warning system">
+  </section>
+
+  <section id="environment">
+    <h2>Environmental Impact Assessment</h2>
+    <ul>
+      <li><strong>Materials:</strong> The Arduino Uno is RoHS and WEEE compliant, limiting hazardous substances.
+      </li>
+      <li><strong>Energy Efficiency:</strong> The circuit draws minimal power (~50 mA at 5V), ideal for USB or
+        solar power.</li>
+      <li><strong>Reusability:</strong> All components are modular and reusable, reducing electronic waste.</li>
+      <li><strong>Packaging & Shipping:</strong> Ordering all components from a single supplier helps minimize
+        carbon footprint.</li>
+    </ul>
+  </section>
+
+  <section id="bom">
+    <h2>Bill of Materials (BoM)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Subtotal</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Arduino Uno Rev3</td>
+          <td>1</td>
+          <td>$27.60</td>
+          <td>$27.60</td>
+          <td><a href="https://store-usa.arduino.cc/products/arduino-uno-rev3">Arduino Store</a></td>
+        </tr>
+        <tr>
+          <td>HC-SR04 Ultrasonic Sensor</td>
+          <td>1</td>
+          <td>$3.95</td>
+          <td>$3.95</td>
+          <td><a href="https://www.adafruit.com/product/3942">Adafruit</a></td>
+        </tr>
+        <tr>
+          <td>Passive Buzzer</td>
+          <td>1</td>
+          <td>$0.95</td>
+          <td>$0.95</td>
+          <td><a href="https://www.sparkfun.com/passive-buzzer-module.html">SparkFun</a></td>
+        </tr>
+        <tr>
+          <td>LEDs (Red, Yellow, Green)</td>
+          <td>3</td>
+          <td>$0.20</td>
+          <td>$0.60</td>
+          <td>Adafruit</td>
+        </tr>
+        <tr>
+          <td>220 Ω Resistors</td>
+          <td>3</td>
+          <td>$0.03</td>
+          <td>$0.09</td>
+          <td>Adafruit</td>
+        </tr>
+        <tr>
+          <td>Breadboard</td>
+          <td>1</td>
+          <td>$4.95</td>
+          <td>$4.95</td>
+          <td><a href="https://www.adafruit.com/product/64">Adafruit</a></td>
+        </tr>
+        <tr>
+          <td>Jumper Wires</td>
+          <td>1 set</td>
+          <td>$3.50</td>
+          <td>$3.50</td>
+          <td><a href="https://www.sparkfun.com/jumper-wires-standard-7-m-m-30-awg-30-pack.html">SparkFun</a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Estimated Total</td>
+          <td>$41.64</td>
+          <td>—</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <section id="prototype">
+    <h2>Prototype</h2>
+    <p>The following image shows the assembled prototype on a breadboard.</p>
+    <img id="prototypeImage" src="prototype.jpg" alt="Collision warning system prototype">
+  </section>
+
+  <section id="code">
+    <h2>Arduino Code</h2>
+    <p>The following Arduino code controls the system, lighting LEDs and activating the buzzer based on distance
+      readings from the HC-SR04 sensor.</p>
+    <div class="code-container" style="position: relative;">
+      <button class="copy-btn" onclick="copyCode()" style="position:absolute; top:8px; right:8px; z-index:10;">
+        Copy
+      </button>
+
+      <pre class="line-numbers">
+
+  <code id="arduinoCode" class="language-cpp">
+// Collision Warning System with Distance Sensor (HC-SR04)
+// Author: Ana Rodrigues
+// Oct 2, 2025
+// Object is farther than 50cm: Green LED lights up
+// Object is closer than 50 cm, but more than 10cm away: Yellow LED lights, buzzer plays 300Hz tone
+// Object is closer than 10cm: Red LED lights up, buzzer plays 500Hz tone
+
+//LED pins
+const int greenLED = 2;
+const int yellowLED = 3;
+const int redLED = 4;
+
+// Ultrasonic sensor pins
+const int trigPin = 9;
+const int echoPin = 10;
+
+// Passive buzzer pin
+const int buzzer = 11;
+
+void setup() {
+  pinMode(greenLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(redLED, OUTPUT);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Measure distance
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  long duration = pulseIn(echoPin, HIGH);
+  long distance = duration * 0.034 / 2;
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  
+  //Error in measurement:
+  if (distance <= 0)
+    return;
+
+  //Too close:
+  if (distance <= 10) {
+    digitalWrite(greenLED, LOW);
+    digitalWrite(yellowLED, LOW);
+    digitalWrite(redLED, HIGH);
+    tone(buzzer, 500); // Play 500Hz tone
+    return;
+  }
+
+  //Midrange:
+  if (distance <= 30) {
+    digitalWrite(greenLED, LOW);
+    digitalWrite(yellowLED, HIGH);
+    digitalWrite(redLED, LOW);
+    tone(buzzer, 300); // Play 300Hz tone
+    return;
+  }
+
+  //Normal status:
+  digitalWrite(greenLED, HIGH);
+  digitalWrite(yellowLED, LOW);
+  digitalWrite(redLED, LOW);
+  noTone(buzzer); // stop buzzer
+
+  delay(100);
+}
+    </code>
+  </pre>
+
+      <script>
+        function copyCode() {
+          const code = document.getElementById('arduinoCode').innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            alert('Code copied to clipboard!');
+          });
+        }
+      </script>
+  </section>
+
+
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>The system effectively demonstrates distance-based alerting using Arduino. It’s affordable, educational, and
+      sustainable through reusable components.</p>
+  </section>
+
+  <section id="references">
+    <h2>References</h2>
+
+    <ul>
+
+      <li>
+
+        Circuit Digest (n.d.).
+
+        <em>Automatic AC Temperature Controller using Arduino, DHT11 and IR Blaster.</em>
+
+        Microcontroller Based Projects.
+
+        <a href="https://circuitdigest.com/microcontroller-projects/arduino-automatic-ac-temperature-control"
+          target="_blank" rel="noopener noreferrer">
+
+          https://circuitdigest.com/microcontroller-projects/arduino-automatic-ac-temperature-control
+
+        </a>
+
+      </li>
+
+
+
+      <li>
+
+        Last Minute Engineers. (n.d.).
+
+        <em>Arduino UNO Pinout Reference</em>
+
+        Last Minute Engineers.
+
+        <a href="https://lastminuteengineers.com/arduino-pinout/" target="_blank" rel="noopener noreferrer">
+
+          https://lastminuteengineers.com/arduino-pinout/
+
+        </a>
+
+      </li>
+
+
+
+      <li>
+
+        Researchgate. (n.d.).
+
+        <em>Air Conditioner Temperature Control Using Arduino with Monitoring System (ACM:IA-I-RRL-PM-R-A)</em>
+
+        Researchgate.
+
+        <a href="https://www.researchgate.net/publication/361808646_Air_Conditioner_Temperature_Control_Using_Arduino_with_Monitoring_System"
+          target="_blank" rel="noopener noreferrer">
+
+          https://www.researchgate.net/publication/361808646_Air_Conditioner_Temperature_Control_Using_Arduino_with_Monitoring_System
+
+      </li>
+
+
+
+    </ul>
+
+  </section>
+
+
+
+</body>
+
+</html>
